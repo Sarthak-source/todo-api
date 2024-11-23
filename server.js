@@ -1,7 +1,7 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Import the cors package
 const todoRoutes = require('./routes/todoRoutes');
 require('dotenv').config();
 
@@ -10,9 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const DB_URI = process.env.DB_URI;
 
-
 // Middleware
 app.use(bodyParser.json());
+app.use(cors()); // Allow all origins
 
 // Routes
 app.use('/api', todoRoutes);
